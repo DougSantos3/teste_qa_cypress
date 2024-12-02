@@ -1,0 +1,22 @@
+{
+  "name": "prova_qa",
+  "version": "1.0.0",
+  "description": "Teste QA",
+  "main": "cypress.config.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "test:api": "npx cypress run --spec './cypress/e2e/api/tests/**/*.cy.js'",
+    "test:ui": "npx cypress run --spec './cypress/e2e/ui/tests/*.cy.js'"
+  },
+  "keywords": [],
+  "author": "Douglas Martins Santos",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.16.0",
+    "cypress-xpath": "^2.0.1"
+  },
+  "dependencies": {
+    "cypress-postgres-10v-compatibility": "^1.0.0",
+    "joi": "^17.13.3"
+  }
+}
