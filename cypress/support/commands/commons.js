@@ -1,43 +1,61 @@
 import 'cypress-xpath'
 
-Cypress.Commands.add('login', (email, password) => {
-  cy.visit('/login')
+Cypress.Commands.add('urlFront', (path) => {
+  cy.visit(`${Cypress.env('baseUrlFront')}/${path}`)
+
+})
+
+Cypress.Commands.add('authentication', (email, password) => {
   cy.get('[data-testid="email"]').type(email)
-  cy.get('senha').type(password)
+  cy.get('input[name="password"]').type(password)
   cy.get('[data-testid="entrar"]').click()
 })
 
-Cypress.Commands.add('createUser', (email, password, clickCheckbox = false) => {
+Cypress.Commands.add('createUser', (name, email, password, clickCheckbox = false) => {
   cy.get('[data-testid="cadastrar"]').click()
-  cy.get('[data-testid="nome"]').type(email)
-  cy.get('[data-testid="email"]').type(password)
-  cy.get('[data-testid="password"]').click()
+  cy.get('[data-testid="nome"]').type(name)
+  cy.get('[data-testid="email"]').type(email)
+
+  cy.get('input[data-testid="password"]').type(password)
+  cy.get('[data-testid="cadastrar"]').click()
 
   if (clickCheckbox) {
     cy.get('[data-testid="checkbox"]').click()
   }
-
-  cy.get('[data-testid="cadastrarUsuario"]').click()
+  
+  cy.get('button[type="submit"]').click()
 })
 
-Cypress.Commands.add('createProductUI', () => {
+Cypress.Commands.add('createProductUI', (customProduct = {}) => {
   const randomNum = Math.floor(Math.random() * 50000000) + 1
 
-  const product = {
+  const defaultProduct = {
     nome: `Produto ${randomNum}`,
-    preco: (Math.random() * 100).toFixed(2), 
+    preco: Math.floor(Math.random() * 10000000), 
     descricao: `Descrição do Produto ${randomNum}`, 
     quantidade: Math.floor(Math.random() * 10) + 1,
   }
 
-  cy.get('[data-testid="cadastrarProdutos"]').click()
-  cy.get('[data-testid="nome"]').type(product.nome)
-  cy.get('[data-testid="preco"]').type(product.preco)
-  cy.get('[data-testid="descricao"]').type(product.descricao)
-  cy.get('[data-testid="quantity"]').type(product.quantidade)
-  cy.get('[data-testid="cadastrarProdutos"]').click()
-})
+  const product = { ...defaultProduct, ...customProduct }
 
+  cy.get('[data-testid="cadastrarProdutos"]').click()
+
+  if (product.nome) {
+    cy.get('[data-testid="nome"]').type(product.nome)
+  } else {
+    cy.get('[data-testid="nome"]').clear() 
+  }
+
+  if (product.descricao) {
+    cy.get('[data-testid="descricao"]').type(product.descricao)
+  } else {
+    cy.get('[data-testid="descricao"]').clear()
+  }
+
+  cy.get('[data-testid="preco"]').type(product.preco.toString()) 
+  cy.get('[data-testid="quantity"]').type(product.quantidade.toString())
+  cy.get('button[data-testid^="cadastarProd"]').click()
+})
 
 Cypress.Commands.add('generateRandomEmail', () => {
   const randomNumber = Math.floor(Math.random() * 50000000) + 1
