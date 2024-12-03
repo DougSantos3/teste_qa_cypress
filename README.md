@@ -23,8 +23,13 @@ npm run test:ui
 npm run test:api
 ```
 
-Project tested UI [Serverest](https://front.serverest.dev/login)
-Project tested API [Serverest](https://serverest.dev/#/)
+## Learn More
+
+From the test application I have my postman collection with more automated scripts than the one that comes in the serverRest repository. Mine is more up to date
+
+colletion_postman/myCollection.postman_collection.json
+colletion_postman/postman_environment.json
+
 
 
 
@@ -32,4 +37,8 @@ Project tested API [Serverest](https://serverest.dev/#/)
 
 To learn more repository serveRest:
 
+
+- Project tested UI [Serverest](https://front.serverest.dev/login)
+- Project tested API [Serverest](https://serverest.dev/#/)
 - [Repository ServeRest](https://github.com/ServeRest/ServeRest) 
+
