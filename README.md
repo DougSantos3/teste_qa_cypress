@@ -25,9 +25,10 @@ npm run test:api
 
 ## Learn More
 
-From the test application I have my postman collection with more automated scripts than the one that comes in the serverRest repository. Mine is more up to date
+From the test application I have my postman collection with more automated scripts than the one that comes in the serverRest repository. Mine is more up to date:
 
 colletion_postman/myCollection.postman_collection.json
+<br>
 colletion_postman/postman_environment.json
 
 
