@@ -1,21 +1,24 @@
-export const updateUserEmailRequest = (authorization, newEmail) => {
+import requestBodyUser from '../../../fixtures/user.json'
+
+export const updateUserEmailRequest = (authorization, userId, newEmail) => {
+
   return cy
     .request({
-      method: "PUT",
-      url: `usuarios/${Cypress.env("userId")}`,
+      method: 'PUT',
+      url: `usuarios/${userId}`,
       headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
         Authorization: authorization,
       },
       body: {
+        ...requestBodyUser,
         email: newEmail, 
       },
     })
     .then((response) => {
       expect(response.status).to.eq(200) 
-      expect(response.body.message).to.eq("Cadastro realizado com sucesso") 
-      expect(response.body).to.have.property("_id") 
-      cy.wrap(response.body._id).as("updatedUserId") 
+      expect(response.body.message).to.eq('Registro alterado com sucesso')
+      cy.wrap(response.body._id).as('updatedUserId')
     })
 }

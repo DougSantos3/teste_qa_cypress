@@ -1,11 +1,11 @@
-export const createCartRequest = (authorization, productId) => {
+export const createCardRequest = (authorization, productId) => {
   return cy.request({
-    method: "POST",
-    url: "carrinhos",
+    method: 'POST',
+    url: 'carrinhos',
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization: `Bearer ${authorization}`,
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: authorization,
     },
     body: {
       produtos: [
@@ -15,5 +15,8 @@ export const createCartRequest = (authorization, productId) => {
         },
       ],
     },
+  }).then((response) => {
+    const cardId = response.body._id  
+    cy.wrap(cardId).as('cardId')
   })
 }

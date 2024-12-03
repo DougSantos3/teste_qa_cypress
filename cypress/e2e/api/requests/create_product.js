@@ -1,6 +1,12 @@
 import productBody from '../../../fixtures/product.json'
 
-export const createProductRequest = (authorization) => {
+export const createProductRequest = (authorization, name) => {
+
+    const userWithDynamicProduct = {
+        ...productBody,
+        nome: name
+    }
+
     return cy.request({
         method: 'POST',
         url: 'produtos',
@@ -9,10 +15,10 @@ export const createProductRequest = (authorization) => {
             Accept: 'application/json',
             Authorization: authorization  
         },
-        body: productBody
+        body: userWithDynamicProduct
     }).then((response) => {
-        const product_id = response.body._id  
-        cy.wrap(product_id).as('product_id')  
+        const productId = response.body._id  
+        cy.wrap(productId).as('productId')  
     })
 }
   

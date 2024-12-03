@@ -1,9 +1,9 @@
-export const requestProduto = (product_id) => {
+export const searchProduct = (product_id) => {
   return cy.request({
-    method: "GET",
+    method: 'GET',
     url: `produtos/${product_id}`,
     headers: {
-      Accept: "application/json",
+      Accept: 'application/json',
     },
   })
 }

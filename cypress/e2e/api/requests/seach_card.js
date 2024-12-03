@@ -1,9 +1,9 @@
 export const getCartRequest = (cartId) => {
   return cy.request({
-    method: "GET",
+    method: 'GET',
     url: `carrinhos/${cartId}`,
     headers: {
-      Accept: "application/json",
+      Accept: 'application/json',
     },
   })
 }

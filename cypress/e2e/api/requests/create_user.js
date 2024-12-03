@@ -1,16 +1,22 @@
-import productUser from "../../../fixtures/user.json"
+import requestBodyUser from '../../../fixtures/user.json'
 
-export const createUserRequest = () => {
+export const createUserRequest = (email) => {
+
+  const userWithDynamicEmail = {
+    ...requestBodyUser,
+    email: email
+  }
+
   return cy.request({
-    method: "POST",
-    url: "usuarios",
+    method: 'POST',
+    url: 'usuarios',
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
     },
-    body: productUser,
+    body: userWithDynamicEmail,
   }).then((response) => {
     const userId = response.body._id
-    cy.wrap(userId).as("userId") 
+    cy.wrap(userId).as('userId') 
   })
 }
