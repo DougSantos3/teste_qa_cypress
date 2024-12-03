@@ -1,46 +1,37 @@
-import { createUserRequest } from "../../request/createUserRequest"
-import { loginRequest } from "../../request/loginRequest"
-import { createProductRequest } from "../../request/createProductRequest"
-import { createCartRequest } from "../../request/createCartRequest"
-import { getCartRequest } from "../../request/getCartRequest"
+import { createUserRequest } from '../requests/create_user'
+import { loginRequest } from '../requests/login'
+import { createProductRequest } from '../requests/create_product'
+import { createCardRequest } from '../requests/create_card'
+import { getCartRequest } from '../requests/seach_card'
 
+describe('Create cart', () => {
+  it('You must create a user, log in, create a product, create a cart and validate the cart.', () => {
+    cy.generateRandomEmail().as('randomEmail')
 
-describe("reate cart", () => {
-  it("You must create a user, log in, create a product, create a cart and validate the cart.", () => {
-    let authorization
-    let productId
-    let cartId
-
-    createUserRequest()
-      .then((response) => {
-        expect(response.status).to.eq(201)
-
-        const { email, password } = response.body
-        return loginRequest(email, password)
+    cy.get('@randomEmail').then((randomEmail) => {
+      createUserRequest(randomEmail).then(() => {
+        loginRequest(randomEmail).then(() => {
+          cy.get('@authorization').then((authorization) => {
+            cy.generateRandomProduct().then((product) => {
+              createProductRequest(authorization, product).then(() => {
+                cy.get('@productId').then((productId) => {
+                  createCardRequest(authorization, productId).then(() => {
+                    cy.get('@cardId').then((cardId) => {
+                      getCartRequest(cardId).then((response) => {
+                        expect(response.status).to.eq(200)
+                        expect(response.body).to.have.property('_id', cardId)
+                        expect(response.body.produtos[0].idProduto).to.eq(
+                          productId
+                        )
+                      })
+                    })
+                  })
+                })
+              })
+            })
+          })
+        })
       })
-      .then((response) => {
-        expect(response.status).to.eq(200)
-        authorization = response.body.authorization
-
-        return createProductRequest(authorization)
-      })
-      .then((response) => {
-        expect(response.status).to.eq(201)
-        productId = response.body._id
-
-        return createCartRequest(authorization, productId)
-      })
-      .then((response) => {
-        expect(response.status).to.eq(201)
-        expect(response.body.message).to.eq("Cadastro realizado com sucesso")
-        cartId = response.body._id
-
-        return getCartRequest(cartId)
-      })
-      .then((response) => {
-        expect(response.status).to.eq(200)
-        expect(response.body).to.have.property("_id", cartId)
-        expect(response.body.produtos[0].idProduto).to.eq(productId)
-      })
+    })
   })
 })
