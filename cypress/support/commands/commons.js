@@ -24,13 +24,12 @@ Cypress.Commands.add('createProductUI', () => {
   const randomNum = Math.floor(Math.random() * 50000000) + 1
 
   const product = {
-    nome: `Produto ${randomNum}`, // Nome com número aleatório
-    preco: (Math.random() * 100).toFixed(2), // Preço aleatório entre 0 e 100
-    descricao: `Descrição do Produto ${randomNum}`, // Descrição com número aleatório
-    quantidade: Math.floor(Math.random() * 10) + 1, // Quantidade aleatória entre 1 e 10
+    nome: `Produto ${randomNum}`,
+    preco: (Math.random() * 100).toFixed(2), 
+    descricao: `Descrição do Produto ${randomNum}`, 
+    quantidade: Math.floor(Math.random() * 10) + 1,
   }
 
-  // Criação do produto
   cy.get('[data-testid="cadastrarProdutos"]').click()
   cy.get('[data-testid="nome"]').type(product.nome)
   cy.get('[data-testid="preco"]').type(product.preco)
