@@ -13,10 +13,7 @@ module.exports = defineConfig({
     },
     baseUrl: 'https://serverest.dev/',
     env: {
-      apiKey: 'Your api key',
-      token: 'Your token',
-      cookie: 'Your cookie',
-      boardId: 'Your  board id',
+      baseUrlFront: 'https://front.serverest.dev'
     },
     retries: {
       runMode: 0,
