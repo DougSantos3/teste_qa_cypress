@@ -1,10 +1,20 @@
-describe("Product's", () => {
+import { createUserRequest } from "../../api/requests/create_user"
+
+
+describe("Products", () => {
   beforeEach(() => {
-    cy.urlFront("login")
+    cy.generateRandomEmailAndPassword().then((userData) => {
+      const email = userData.email
+      const password = userData.password
+
+      createUserRequest(email, password).then(() => {
+        cy.urlUI("login")
+        cy.authenticationUI(email, password)
+      })
+    })
   })
-  it('You must authenticate and register a product', () => {
-    cy.urlFront('login')
-    cy.authentication("teste_qa_7@qa.com", "123")
+
+  it("You must authenticate and register a product", () => {
     cy.createProductUI()
 
     cy.xpath('//h1[contains(text(), "Lista dos Produtos")]').should(
@@ -12,25 +22,19 @@ describe("Product's", () => {
     )
   })
 
-  it('Name is required', () => {
-    cy.urlFront('login')
-    cy.authentication("teste_qa_7@qa.com", "123")
-    
-    cy.createProductUI({ nome: '' })
-  
-    cy.xpath('//span[contains(text(), "Nome é obrigatório")]').should("be.visible")
+  it("Name is required", () => {
+    cy.createProductUI({ nome: "" })
+
+    cy.xpath('//span[contains(text(), "Nome é obrigatório")]').should(
+      "be.visible"
+    )
   })
-  
 
-  it('Description cannot be blank', () => {
+  it("Description cannot be blank", () => {
+    cy.createProductUI({ descricao: "" })
 
-    cy.urlFront('login')
-    cy.authentication('teste_qa_7@qa.com', '123')
-    
-    cy.createProductUI({ descricao: '' })
-  
-    cy.xpath(
-      '//span[contains(text(), "Descricao é obrigatório")]'
-    ).should('be.visible')
+    cy.xpath('//span[contains(text(), "Descricao é obrigatório")]').should(
+      "be.visible"
+    )
   })
 })
