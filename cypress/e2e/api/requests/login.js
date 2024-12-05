@@ -1,8 +1,4 @@
-import requestBodyUser from '../../../fixtures/user.json'
-
-export const loginRequest = (email) => {
-
-    const { password } = requestBodyUser
+export const loginRequest = (email, password) => {
 
     return cy.request({
         method: 'POST',

@@ -1,5 +1,6 @@
 import productBody from '../../../fixtures/product.json'
 
+
 export const createProductRequest = (authorization, name) => {
 
     const userWithDynamicProduct = {

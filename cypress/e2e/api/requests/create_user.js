@@ -1,10 +1,12 @@
 import requestBodyUser from '../../../fixtures/user.json'
 
-export const createUserRequest = (email) => {
+
+export const createUserRequest = (email, password) => {
 
   const userWithDynamicEmail = {
     ...requestBodyUser,
-    email: email
+    email: email,
+    password: password
   }
 
   return cy.request({

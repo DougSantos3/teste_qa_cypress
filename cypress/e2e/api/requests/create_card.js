@@ -1,4 +1,5 @@
 export const createCardRequest = (authorization, productId) => {
+  
   return cy.request({
     method: 'POST',
     url: 'carrinhos',

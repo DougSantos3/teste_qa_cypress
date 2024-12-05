@@ -1,6 +1,7 @@
 import requestBodyUser from '../../../fixtures/user.json'
 
-export const updateUserEmailRequest = (authorization, userId, newEmail) => {
+
+export const updateUserEmailRequest = (authorization, userId, newEmail, password) => {
 
   return cy
     .request({
@@ -14,6 +15,7 @@ export const updateUserEmailRequest = (authorization, userId, newEmail) => {
       body: {
         ...requestBodyUser,
         email: newEmail, 
+        password: password
       },
     })
     .then((response) => {
