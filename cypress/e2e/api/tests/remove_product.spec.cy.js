@@ -4,13 +4,15 @@ import { createProductRequest } from '../requests/create_product'
 import { deleteProductRequest } from '../requests/delete_product'
 import { searchProduct } from '../requests/search_product'
 
+
 describe('Delete product', () => {
   it('You must create a user, authenticate, create a product and delete it', () => {
-    cy.generateRandomEmail().as('randomEmail')
+    cy.generateRandomEmailAndPassword().then((userData) => {
+      const email = userData.email
+      const password = userData.password
 
-    cy.get('@randomEmail').then((randomEmail) => {
-      createUserRequest(randomEmail).then(() => {
-        loginRequest(randomEmail).then(() => {
+      createUserRequest(email, password).then(() => {
+        loginRequest(email, password).then(() => {
           cy.get('@authorization').then((authorization) => {
             cy.generateRandomProduct().then((product) => {
               createProductRequest(authorization, product).then(() => {

@@ -3,13 +3,15 @@ import { loginRequest } from '../requests/login'
 import { createProductRequest } from '../requests/create_product'
 import { searchProduct } from '../requests/search_product'
 
+
 describe('Check product', () => {
   it('You must create the user, log in, create a product and verify that the product was created successfully.', () => {
-    cy.generateRandomEmail().as('randomEmail')
+    cy.generateRandomEmailAndPassword().then((userData) => {
+      const email = userData.email
+      const password = userData.password
 
-    cy.get('@randomEmail').then((randomEmail) => {
-      createUserRequest(randomEmail).then(() => {
-        loginRequest(randomEmail).then(() => {
+      createUserRequest(email, password).then(() => {
+        loginRequest(email, password).then(() => {
           cy.get('@authorization').then((authorization) => {
             cy.generateRandomProduct().then((product) => {
               createProductRequest(authorization, product).then(() => {

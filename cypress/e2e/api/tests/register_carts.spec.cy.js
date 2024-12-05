@@ -4,13 +4,17 @@ import { createProductRequest } from '../requests/create_product'
 import { createCardRequest } from '../requests/create_card'
 import { getCartRequest } from '../requests/seach_card'
 
-describe('Create cart', () => {
-  it('You must create a user, log in, create a product, create a cart and validate the cart.', () => {
-    cy.generateRandomEmail().as('randomEmail')
 
-    cy.get('@randomEmail').then((randomEmail) => {
-      createUserRequest(randomEmail).then(() => {
-        loginRequest(randomEmail).then(() => {
+describe('Create cart', () => {
+  
+  it('You must create a user, log in, create a product, create a cart and validate the cart.', () => {
+    
+    cy.generateRandomEmailAndPassword().then((userData) => {
+      const email = userData.email
+      const password = userData.password
+
+      createUserRequest(email, password).then(() => {
+        loginRequest(email, password).then(() => {
           cy.get('@authorization').then((authorization) => {
             cy.generateRandomProduct().then((product) => {
               createProductRequest(authorization, product).then(() => {
@@ -32,6 +36,6 @@ describe('Create cart', () => {
           })
         })
       })
-    })
+    })        
   })
 })
