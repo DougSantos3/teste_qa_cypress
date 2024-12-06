@@ -12,11 +12,14 @@
   "author": "Douglas Martins Santos",
   "license": "ISC",
   "devDependencies": {
+    "@faker-js/faker": "^9.3.0",
     "cypress": "^13.16.0",
     "cypress-xpath": "^2.0.1"
   },
   "dependencies": {
     "cypress-postgres-10v-compatibility": "^1.0.0",
-    "joi": "^17.13.3"
+    "joi": "^17.13.3",
+    "pg": "^8.13.1",
+    "pg-promise": "^11.10.2"
   }
 }
