@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker'
 import 'cypress-xpath'
 
 
@@ -77,14 +78,7 @@ Cypress.Commands.add('generateRandomEmail', () => {
 
 
 Cypress.Commands.add('generateRandomPassword', () => {
-  const chars =
-    '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+~`|}{[]:?><,./-='
-  let password = ''
-  for (let i = 0; i < 7; i++) {
-    const randomNumber = Math.floor(Math.random() * chars.length)
-    password += chars.substring(randomNumber, randomNumber + 1)
-  }
-  return password
+  return faker.internet.password(7, true)
 })
 
 
