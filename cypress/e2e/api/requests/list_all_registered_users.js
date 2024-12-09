@@ -1,11 +1,11 @@
-export const listAllRegisteredUsers = () => {
+export const listAllRegisteredUsers = (email, password, administrador = true) => {
   
   const queryParams = {
-    _id: "<string>",
-    nome: "<string>",
-    email: "teste3@qa.com",
-    password: "<string>",
-    administrador: "true",
+    _id: "7",
+    nome: "Teste Souza Silva",
+    email: email,
+    password: password,
+    administrador: administrador,
   }
 
   return cy.request({
