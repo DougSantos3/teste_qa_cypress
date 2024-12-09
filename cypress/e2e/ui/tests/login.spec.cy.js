@@ -1,7 +1,7 @@
 import { createUserRequest } from "../../api/requests/create_user"
 
 
-describe("Login Page", () => {
+describe('Login Page', () => {
   it('should log in successfully and show "Bem Vindo"', () => {
     cy.generateRandomEmailAndPassword().then((userData) => {
       const email = userData.email

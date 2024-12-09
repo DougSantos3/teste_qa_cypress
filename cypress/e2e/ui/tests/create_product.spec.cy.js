@@ -1,4 +1,4 @@
-import { createUserRequest } from "../../api/requests/create_user"
+import { createUserRequest } from '../../api/requests/create_user'
 
 
 describe('Products', () => {
