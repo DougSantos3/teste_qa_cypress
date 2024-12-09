@@ -5,6 +5,10 @@ This is a Test QA - project using  [`cypress`](https://www.cypress.io/).
 You need to download the packages:
 
 ```bash
+node: v22.11.0
+```
+
+```bash
 npm install
 # or
 yarn
@@ -42,4 +46,4 @@ To learn more repository serveRest:
 - Project tested UI [Serverest](https://front.serverest.dev/login)
 - Project tested API [Serverest](https://serverest.dev/#/)
 - [Repository ServeRest](https://github.com/ServeRest/ServeRest) 
-
+- 
