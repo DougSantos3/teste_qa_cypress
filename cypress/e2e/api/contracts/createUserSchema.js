@@ -1,9 +1,7 @@
 import Joi from 'joi'
 
-const createUserSchema = Joi.object({
-  message: Joi.string().required(),
-  _id: Joi.string().required()
+
+export const createUserSchema = Joi.object({
+  message: Joi.string().required().equal('Cadastro realizado com sucesso'),
+  _id: Joi.string().required(),
 })
-
-
-export { createUserSchema }

@@ -1,6 +1,7 @@
 import Joi from 'joi'
 
-const searchUserSchema = Joi.object({
+
+const searchUserIdSchema = Joi.object({
   nome: Joi.string()
     .min(3)
     .max(30)
