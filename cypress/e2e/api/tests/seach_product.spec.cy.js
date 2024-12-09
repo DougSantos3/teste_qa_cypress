@@ -13,8 +13,8 @@ describe('Check product', () => {
       createUserRequest(email, password).then(() => {
         loginRequest(email, password).then(() => {
           cy.get('@authorization').then((authorization) => {
-            cy.generateRandomProduct().then((product) => {
-              createProductRequest(authorization, product).then(() => {
+            cy.generateRandomProduct().then((userData) => {
+              createProductRequest(authorization, userData.nome, userData.preco, userData.descricao, userData.quantidade).then(() => {
                 cy.get('@productId').then((productId) => {
                   searchProduct(productId).then((getProductResponse) => {
                     expect(getProductResponse.status).to.eq(200)

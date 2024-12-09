@@ -8,7 +8,7 @@ describe("Login Page", () => {
       const password = userData.password
 
       createUserRequest(email, password).then(() => {
-        cy.urlUI("login")
+        cy.urlUI('login')
         cy.authenticationUI(email, password)
         cy.xpath('//h1[contains(text(), "Bem Vindo")]').should("be.visible")
       })
