@@ -1,6 +1,5 @@
 <div style="text-align: center;">
-  <h2>Automation with Cypress</h2>
-  <p align="center">
+  <h2>Automation with Cypress on:</h2>
  <img alt="Logo do ServeRest" src="https://user-images.githubusercontent.com/29241659/115161869-6a017e80-a076-11eb-9bbe-c391eff410db.png" height="120">
 </p>
   
