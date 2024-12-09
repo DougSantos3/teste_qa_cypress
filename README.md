@@ -1,3 +1,25 @@
+<div style="text-align: center;">
+  <h2>Automation with Cypress</h2>
+  <p align="center">
+ <img alt="Logo do ServeRest" src="https://user-images.githubusercontent.com/29241659/115161869-6a017e80-a076-11eb-9bbe-c391eff410db.png" height="120">
+</p>
+  
+
+<br /><br />
+
+<p style="display: flex; justify-content: center; gap: 10px;">
+<img src="https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_teste_qa_cypress&metric=alert_status" alt="Quality Gate Status" />
+<img src="https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_teste_qa_cypress&metric=bugs" alt="Bugs" />
+<img src="https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_teste_qa_cypress&metric=code_smells" alt="Code Smells" />
+<img src="https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_teste_qa_cypress&metric=duplicated_lines_density" alt="Duplicated Lines (%)" />
+</p>
+</div>
+
+
+
+<br>
+<br>
+
 This is a Test QA - project using  [`cypress`](https://www.cypress.io/).
 
 ## Getting Started
@@ -47,3 +69,6 @@ To learn more repository serveRest:
 - Project tested API [Serverest](https://serverest.dev/#/)
 - [Repository ServeRest](https://github.com/ServeRest/ServeRest) 
 - 
+
+### Sonnar
+
