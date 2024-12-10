@@ -1,8 +1,11 @@
 import requestBodyUser from '../../../fixtures/user.json'
 
-
-export const updateUserEmailRequest = (authorization, userId, newEmail, password) => {
-
+export const updateUserEmailRequest = (
+  authorization,
+  userId,
+  newEmail,
+  password
+) => {
   return cy
     .request({
       method: 'PUT',
@@ -14,12 +17,12 @@ export const updateUserEmailRequest = (authorization, userId, newEmail, password
       },
       body: {
         ...requestBodyUser,
-        email: newEmail, 
-        password: password
+        email: newEmail,
+        password: password,
       },
     })
     .then((response) => {
-      expect(response.status).to.eq(200) 
+      expect(response.status).to.eq(200)
       expect(response.body.message).to.eq('Registro alterado com sucesso')
       cy.wrap(response.body._id).as('updatedUserId')
     })
