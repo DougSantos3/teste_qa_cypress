@@ -1,7 +1,7 @@
 import Joi from 'joi'
 
 
-const searchUserIdSchema = Joi.object({
+export const searchUserIdSchema = Joi.object({
   nome: Joi.string()
     .min(3)
     .max(30)
@@ -20,5 +20,3 @@ const searchUserIdSchema = Joi.object({
     .length(24) 
     .required(),
 })
-
-export { searchUserSchema }
