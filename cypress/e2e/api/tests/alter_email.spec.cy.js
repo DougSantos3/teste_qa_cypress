@@ -1,10 +1,10 @@
-import { createUserRequest } from "../requests/create_user"
-import { searchProduct } from "../requests/search_user"
-import { loginRequest } from "../requests/login"
-import { updateUserEmailRequest } from "../requests/alter_user"
+import { createUserRequest } from '../requests/create_user'
+import { searchProduct } from '../requests/search_user'
+import { loginRequest } from '../requests/login'
+import { updateUserEmailRequest } from '../requests/alter_user'
 
-describe("Testing user creation flow, login, email change", () => {
-  it("Change email", () => {
+describe('Testing user creation flow, login, email change', () => {
+  it('Change email', () => {
     cy.generateRandomEmailAndPassword().then((userData) => {
       const email = userData.email
       const password = userData.password
@@ -12,12 +12,12 @@ describe("Testing user creation flow, login, email change", () => {
       let authorization
 
       createUserRequest(email, password)
-        .then(() => cy.get("@userId"))
+        .then(() => cy.get('@userId'))
         .then((id) => {
           userId = id
           return loginRequest(email, password)
         })
-        .then(() => cy.get("@authorization"))
+        .then(() => cy.get('@authorization'))
         .then((auth) => {
           authorization = auth
           const newEmail = `new_${email}`
