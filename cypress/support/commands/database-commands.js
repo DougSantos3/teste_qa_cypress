@@ -28,4 +28,4 @@ Cypress.Commands.add('deleteExample', (id) => {
   cy.runSQL(query, [id]).then(() => {
     cy.log('Table row deleted')
   })
-});
+})
