@@ -3,7 +3,7 @@ import 'cypress-xpath'
 
 
 Cypress.Commands.add('urlUI', (path) => {
-  cy.visit(`${Cypress.env("baseUrlFront")}/${String(path)}`)
+  cy.visit(`${Cypress.env('baseUrlFront')}/${String(path)}`)
 })
 
 
