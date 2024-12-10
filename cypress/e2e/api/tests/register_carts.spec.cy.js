@@ -1,9 +1,8 @@
-import { createUserRequest } from "../requests/create_user"
-import { loginRequest } from "../requests/login"
-import { createProductRequest } from "../requests/create_product"
-import { createCardRequest } from "../requests/create_card"
-import { getCartRequest } from "../requests/seach_card"
-
+import { createUserRequest } from '../requests/create_user'
+import { loginRequest } from '../requests/login'
+import { createProductRequest } from '../requests/create_product'
+import { createCardRequest } from '../requests/create_card'
+import { getCartRequest } from '../requests/seach_card'
 
 describe('Testing user creation flow, login, create cart', () => {
   it('Create cart', () => {
