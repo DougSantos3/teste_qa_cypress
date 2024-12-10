@@ -1,10 +1,5 @@
-<div style="text-align: center;">
-  <h2>Automation with Cypress on:</h2>
- <img alt="Logo do ServeRest" src="https://user-images.githubusercontent.com/29241659/115161869-6a017e80-a076-11eb-9bbe-c391eff410db.png" height="120">
-</p>
-  
-
-<br /><br />
+<h1 align="center">Automation with Cypress on ServeRest</h1>
+<br />
 
 <p style="display: flex; justify-content: center; gap: 10px;">
 <img src="https://sonarcloud.io/api/project_badges/measure?project=DougSantos3_teste_qa_cypress&metric=alert_status" alt="Quality Gate Status" />
@@ -26,13 +21,12 @@ This is a Test QA - project using  [`cypress`](https://www.cypress.io/).
 You need to download the packages:
 
 ```bash
-node: v22.11.0
+Node: v22.11.0
 ```
 
 ```bash
+# npm version: 10.9.0
 npm install
-# or
-yarn
 ```
 
 Run tests:
@@ -67,7 +61,3 @@ To learn more repository serveRest:
 - Project tested UI [Serverest](https://front.serverest.dev/login)
 - Project tested API [Serverest](https://serverest.dev/#/)
 - [Repository ServeRest](https://github.com/ServeRest/ServeRest) 
-- 
-
-### Sonnar
-
