@@ -17,7 +17,7 @@ describe('Products', () => {
     cy.createProductUI()
 
     cy.xpath('//h1[contains(text(), "Lista dos Produtos")]').should(
-      "be.visible"
+      'be.visible',
     )
   })
 
@@ -25,7 +25,7 @@ describe('Products', () => {
     cy.createProductUI({ nome: '' })
 
     cy.xpath('//span[contains(text(), "Nome é obrigatório")]').should(
-      'be.visible'
+      'be.visible',
     )
   })
 
@@ -33,7 +33,7 @@ describe('Products', () => {
     cy.createProductUI({ descricao: '' })
 
     cy.xpath('//span[contains(text(), "Descricao é obrigatório")]').should(
-      "be.visible"
+      'be.visible',
     )
   })
 })

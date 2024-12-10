@@ -4,7 +4,7 @@ export const updateUserEmailRequest = (
   authorization,
   userId,
   newEmail,
-  password
+  password,
 ) => {
   return cy
     .request({

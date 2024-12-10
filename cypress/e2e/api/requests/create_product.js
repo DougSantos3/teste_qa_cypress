@@ -3,7 +3,7 @@ export const createProductRequest = (
   name,
   price,
   description,
-  quantidy
+  quantidy,
 ) => {
   const requestBody = {
     nome: name,

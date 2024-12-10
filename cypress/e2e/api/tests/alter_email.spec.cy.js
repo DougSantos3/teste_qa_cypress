@@ -25,7 +25,7 @@ describe('Testing user creation flow, login, email change', () => {
             authorization,
             userId,
             newEmail,
-            password
+            password,
           )
         })
         .then(() => {

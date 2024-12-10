@@ -24,8 +24,8 @@ describe('Testing user creation flow, login, email change and Check product', ()
             productData.nome,
             productData.preco,
             productData.descricao,
-            productData.quantidade
-          )
+            productData.quantidade,
+          ),
         )
         .then(() => cy.get('@productId'))
         .then((prodId) => {

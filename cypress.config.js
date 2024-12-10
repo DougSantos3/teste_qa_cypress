@@ -1,19 +1,19 @@
-const { defineConfig } = require('cypress');
+const { defineConfig } = require('cypress')
 
-const cyPostgres = require('cypress-postgres-10v-compatibility');
+const cyPostgres = require('cypress-postgres-10v-compatibility')
 
 module.exports = defineConfig({
   e2e: {
     setupNodeEvents(on, config) {
       on('task', {
         dbQuery: (query) => cyPostgres(query.query, query.connection),
-      });
+      })
 
-      return config;
+      return config
     },
     baseUrl: 'https://serverest.dev/',
     env: {
-      baseUrlFront: 'https://front.serverest.dev'
+      baseUrlFront: 'https://front.serverest.dev',
     },
     retries: {
       runMode: 0,
@@ -30,4 +30,4 @@ module.exports = defineConfig({
       bundler: 'vite',
     },
   },
-});
+})

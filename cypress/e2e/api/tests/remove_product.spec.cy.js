@@ -25,8 +25,8 @@ describe('Testing user creation flow, login, delete product', () => {
             productData.nome,
             productData.preco,
             productData.descricao,
-            productData.quantidade
-          )
+            productData.quantidade,
+          ),
         )
         .then(() => cy.get('@productId'))
         .then((prodId) => {
@@ -34,12 +34,12 @@ describe('Testing user creation flow, login, delete product', () => {
           return searchProduct(productId)
         })
         .then((getProductResponse) =>
-          deleteProductRequest(authorization, getProductResponse.body._id)
+          deleteProductRequest(authorization, getProductResponse.body._id),
         )
         .then((deleteProductResponse) => {
           expect(deleteProductResponse.status).to.eq(200)
           expect(deleteProductResponse.body.message).to.eq(
-            'Registro excluído com sucesso'
+            'Registro excluído com sucesso',
           )
         })
     })

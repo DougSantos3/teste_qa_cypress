@@ -1,7 +1,7 @@
 export const listAllRegisteredUsers = (
   email,
   password,
-  administrador = true
+  administrador = true,
 ) => {
   const queryParams = {
     _id: '7',

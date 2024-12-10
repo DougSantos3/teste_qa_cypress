@@ -8,7 +8,7 @@ describe('Contract Test for empty user listing', () => {
         (response) => {
           expect(response.status).to.be.eq(200)
           return allUserSchema.validateAsync(response.body)
-        }
+        },
       )
     })
   })

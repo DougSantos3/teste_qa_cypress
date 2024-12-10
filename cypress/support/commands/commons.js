@@ -1,18 +1,15 @@
 import { faker } from '@faker-js/faker'
 import 'cypress-xpath'
 
-
 Cypress.Commands.add('urlUI', (path) => {
   cy.visit(`${Cypress.env('baseUrlFront')}/${String(path)}`)
 })
-
 
 Cypress.Commands.add('authenticationUI', (email, password) => {
   cy.get('[data-testid="email"]').type(email)
   cy.get('input[name="password"]').type(password)
   cy.get('[data-testid="entrar"]').click()
 })
-
 
 Cypress.Commands.add(
   'createUserUI',
@@ -29,19 +26,18 @@ Cypress.Commands.add(
     }
 
     cy.get('button[type="submit"]').click()
-  }
+  },
 )
-
 
 Cypress.Commands.add('createProductUI', (customProduct = {}) => {
   const productName = faker.commerce.productName()
-  const randomNumber = faker.number.int({min: 1, max: 999999})
+  const randomNumber = faker.number.int({ min: 1, max: 999999 })
 
   const defaultProduct = {
     nome: `${productName}--${randomNumber}`,
-    preco: faker.number.int({min: 1, max: 10000000}),
+    preco: faker.number.int({ min: 1, max: 10000000 }),
     descricao: `Descrição do ${productName}--${randomNumber}`,
-    quantidade: faker.number.int({min: 1, max: 10})
+    quantidade: faker.number.int({ min: 1, max: 10 }),
   }
 
   const product = { ...defaultProduct, ...customProduct }
@@ -65,27 +61,24 @@ Cypress.Commands.add('createProductUI', (customProduct = {}) => {
   cy.get('button[data-testid^="cadastarProd"]').click()
 })
 
-
 Cypress.Commands.add('generateRandomProduct', () => {
   const productName = faker.commerce.productName()
   const randomNumber = faker.number.int({ min: 1, max: 999999 })
-  return { 
-    nome: `${productName}--${randomNumber}`, 
-    preco : faker.number.int({min: 1, max: 10000000}),  
-    descricao :  `Descrição do ${productName}--${randomNumber}`, 
-    quantidade :  faker.number.int({min: 1, max: 10})}
+  return {
+    nome: `${productName}--${randomNumber}`,
+    preco: faker.number.int({ min: 1, max: 10000000 }),
+    descricao: `Descrição do ${productName}--${randomNumber}`,
+    quantidade: faker.number.int({ min: 1, max: 10 }),
+  }
 })
-
 
 Cypress.Commands.add('generateRandomEmail', () => {
   return faker.internet.email()
 })
 
-
 Cypress.Commands.add('generateRandomPassword', () => {
   return faker.internet.password(7, true)
 })
-
 
 Cypress.Commands.add('generateRandomEmailAndPassword', () => {
   let userEmail
@@ -102,7 +95,6 @@ Cypress.Commands.add('generateRandomEmailAndPassword', () => {
     })
 })
 
-
 Cypress.Commands.add('mockRegisterProduct', () => {
   cy.intercept('POST', 'produtos', {
     statusCode: 201,
@@ -115,12 +107,9 @@ Cypress.Commands.add('mockRegisterProduct', () => {
   cy.visit('')
   cy.get('[data-testid="nome"]').type('Nintendo Switch')
   cy.get('[data-testid="preco"]').type('50')
-  cy.get('[data-testid="descricao"]').type(
-    'Video game com jogos do Mario'
-  )
+  cy.get('[data-testid="descricao"]').type('Video game com jogos do Mario')
   cy.get('[data-testid="submit"]').click()
 })
-
 
 Cypress.Commands.add('createUserAndLogin', (email, password) => {
   return createUserRequest(email, password)
@@ -128,23 +117,36 @@ Cypress.Commands.add('createUserAndLogin', (email, password) => {
     .then(() => {
       cy.get('@authorization').as('authorization')
       cy.get('@userId').as('userId')
-      return cy.get('@authorization') 
+      return cy.get('@authorization')
     })
 })
 
 Cypress.Commands.add('createProduct', (authorization, product) => {
-  return createProductRequest(authorization, product).then(() => cy.get('@productId'))
+  return createProductRequest(authorization, product).then(() =>
+    cy.get('@productId'),
+  )
 })
 
 Cypress.Commands.add('createCart', (authorization, productId) => {
-  return createCardRequest(authorization, productId).then(() => cy.get('@cardId'))
+  return createCardRequest(authorization, productId).then(() =>
+    cy.get('@cardId'),
+  )
 })
 
 Cypress.Commands.add('deleteProduct', (authorization, productId) => {
-  return searchProduct(productId).then(productResponse => deleteProductRequest(authorization, productResponse.body._id))
+  return searchProduct(productId).then((productResponse) =>
+    deleteProductRequest(authorization, productResponse.body._id),
+  )
 })
 
-
-Cypress.Commands.add('updateUserEmail', (authorization, userId, newEmail, password) => {
-    return updateUserEmailRequest(authorization, userId, newEmail, password).then(() => cy.get('@updatedUserId'))
-})
+Cypress.Commands.add(
+  'updateUserEmail',
+  (authorization, userId, newEmail, password) => {
+    return updateUserEmailRequest(
+      authorization,
+      userId,
+      newEmail,
+      password,
+    ).then(() => cy.get('@updatedUserId'))
+  },
+)

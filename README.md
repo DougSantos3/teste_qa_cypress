@@ -9,12 +9,10 @@
 </p>
 </div>
 
-
-
 <br>
 <br>
 
-This is a Test QA - project using  [`cypress`](https://www.cypress.io/).
+This is a Test QA - project using [`cypress`](https://www.cypress.io/).
 
 ## Getting Started
 
@@ -50,14 +48,10 @@ colletion_postman/myCollection.postman_collection.json
 <br>
 colletion_postman/postman_environment.json
 
-
-
-
 ## Learn More
 
 To learn more repository serveRest:
 
-
 - Project tested UI [Serverest](https://front.serverest.dev/login)
 - Project tested API [Serverest](https://serverest.dev/#/)
-- [Repository ServeRest](https://github.com/ServeRest/ServeRest) 
+- [Repository ServeRest](https://github.com/ServeRest/ServeRest)
