@@ -1,5 +1,4 @@
-import { createUserRequest } from "../../api/requests/create_user"
-
+import { createUserRequest } from '../../api/requests/create_user'
 
 describe('Login Page', () => {
   it('should log in successfully and show "Bem Vindo"', () => {
@@ -10,7 +9,7 @@ describe('Login Page', () => {
       createUserRequest(email, password).then(() => {
         cy.urlUI('login')
         cy.authenticationUI(email, password)
-        cy.xpath('//h1[contains(text(), "Bem Vindo")]').should("be.visible")
+        cy.xpath('//h1[contains(text(), "Bem Vindo")]').should('be.visible')
       })
     })
   })
