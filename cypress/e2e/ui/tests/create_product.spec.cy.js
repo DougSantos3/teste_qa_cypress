@@ -1,6 +1,5 @@
 import { createUserRequest } from '../../api/requests/create_user'
 
-
 describe('Products', () => {
   beforeEach(() => {
     cy.generateRandomEmailAndPassword().then((userData) => {
@@ -18,12 +17,12 @@ describe('Products', () => {
     cy.createProductUI()
 
     cy.xpath('//h1[contains(text(), "Lista dos Produtos")]').should(
-      'be.visible'
+      "be.visible"
     )
   })
 
   it('Name is required', () => {
-    cy.createProductUI({ nome: "" })
+    cy.createProductUI({ nome: '' })
 
     cy.xpath('//span[contains(text(), "Nome é obrigatório")]').should(
       'be.visible'
@@ -31,10 +30,10 @@ describe('Products', () => {
   })
 
   it('Description cannot be blank', () => {
-    cy.createProductUI({ descricao: "" })
+    cy.createProductUI({ descricao: '' })
 
     cy.xpath('//span[contains(text(), "Descricao é obrigatório")]').should(
-      'be.visible'
+      "be.visible"
     )
   })
 })
